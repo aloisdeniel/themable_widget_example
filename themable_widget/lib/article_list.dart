@@ -10,9 +10,11 @@ abstract class ArticleTileThemeData with _$ArticleTileThemeData {
     @required TextStyle descriptionStyle,
     @required double spacing,
     @required double imageSize,
+    @required double imageOpacity,
     @required BorderRadius imageBorderRadius,
     @required BoxDecoration decoration,
     @required Color imageColor,
+    @required Duration transitionDuration,
   }) = _ArticleTileThemeData;
 
   factory ArticleTileThemeData.fallback(BuildContext context) {
@@ -20,6 +22,8 @@ abstract class ArticleTileThemeData with _$ArticleTileThemeData {
     return ArticleTileThemeData(
       spacing: 10.0,
       imageSize: 64.0,
+      imageOpacity: 0.3,
+      transitionDuration: const Duration(milliseconds: 300),
       imageColor: Theme.of(context).accentColor,
       imageBorderRadius: BorderRadius.circular(4.0),
       titleStyle: theme.textTheme.headline6,
@@ -79,7 +83,8 @@ class ArticleTile extends StatelessWidget {
     final theme = this.theme ?? ArticleTileTheme.of(context);
     return ArticleTileTheme(
       data: theme,
-      child: Container(
+      child: AnimatedContainer(
+        duration: theme.transitionDuration,
         padding: EdgeInsets.all(theme.spacing),
         decoration: theme.decoration,
         child: Row(
@@ -92,8 +97,16 @@ class ArticleTile extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: <Widget>[
-                  Text(title, style: theme.titleStyle),
-                  Text(description, style: theme.descriptionStyle),
+                  AnimatedDefaultTextStyle(
+                    duration: theme.transitionDuration,
+                    style: theme.titleStyle,
+                    child: Text(title),
+                  ),
+                  AnimatedDefaultTextStyle(
+                    duration: theme.transitionDuration,
+                    style: theme.descriptionStyle,
+                    child: Text(description),
+                  ),
                 ],
               ),
             ),
@@ -114,8 +127,8 @@ class ArticleImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = ArticleTileTheme.of(context);
-    return Container(
-      clipBehavior: Clip.antiAlias,
+    return AnimatedContainer(
+      duration: theme.transitionDuration,
       decoration: BoxDecoration(
         color: theme.imageColor,
         borderRadius: theme.imageBorderRadius,
@@ -123,10 +136,13 @@ class ArticleImage extends StatelessWidget {
       width: theme.imageSize,
       height: theme.imageSize,
       child: Opacity(
-        opacity: 0.3,
-        child: Image.network(
-          url,
-          fit: BoxFit.cover,
+        opacity: theme.imageOpacity,
+        child: ClipRRect(
+          borderRadius: theme.imageBorderRadius,
+          child: Image.network(
+            url,
+            fit: BoxFit.cover,
+          ),
         ),
       ),
     );

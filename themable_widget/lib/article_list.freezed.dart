@@ -18,17 +18,21 @@ class _$ArticleTileThemeDataTearOff {
       @required TextStyle descriptionStyle,
       @required double spacing,
       @required double imageSize,
+      @required double imageOpacity,
       @required BorderRadius imageBorderRadius,
       @required BoxDecoration decoration,
-      @required Color imageColor}) {
+      @required Color imageColor,
+      @required Duration transitionDuration}) {
     return _ArticleTileThemeData(
       titleStyle: titleStyle,
       descriptionStyle: descriptionStyle,
       spacing: spacing,
       imageSize: imageSize,
+      imageOpacity: imageOpacity,
       imageBorderRadius: imageBorderRadius,
       decoration: decoration,
       imageColor: imageColor,
+      transitionDuration: transitionDuration,
     );
   }
 }
@@ -41,9 +45,11 @@ mixin _$ArticleTileThemeData {
   TextStyle get descriptionStyle;
   double get spacing;
   double get imageSize;
+  double get imageOpacity;
   BorderRadius get imageBorderRadius;
   BoxDecoration get decoration;
   Color get imageColor;
+  Duration get transitionDuration;
 
   $ArticleTileThemeDataCopyWith<ArticleTileThemeData> get copyWith;
 }
@@ -57,9 +63,11 @@ abstract class $ArticleTileThemeDataCopyWith<$Res> {
       TextStyle descriptionStyle,
       double spacing,
       double imageSize,
+      double imageOpacity,
       BorderRadius imageBorderRadius,
       BoxDecoration decoration,
-      Color imageColor});
+      Color imageColor,
+      Duration transitionDuration});
 }
 
 class _$ArticleTileThemeDataCopyWithImpl<$Res>
@@ -76,9 +84,11 @@ class _$ArticleTileThemeDataCopyWithImpl<$Res>
     Object descriptionStyle = freezed,
     Object spacing = freezed,
     Object imageSize = freezed,
+    Object imageOpacity = freezed,
     Object imageBorderRadius = freezed,
     Object decoration = freezed,
     Object imageColor = freezed,
+    Object transitionDuration = freezed,
   }) {
     return _then(_value.copyWith(
       titleStyle:
@@ -88,6 +98,9 @@ class _$ArticleTileThemeDataCopyWithImpl<$Res>
           : descriptionStyle as TextStyle,
       spacing: spacing == freezed ? _value.spacing : spacing as double,
       imageSize: imageSize == freezed ? _value.imageSize : imageSize as double,
+      imageOpacity: imageOpacity == freezed
+          ? _value.imageOpacity
+          : imageOpacity as double,
       imageBorderRadius: imageBorderRadius == freezed
           ? _value.imageBorderRadius
           : imageBorderRadius as BorderRadius,
@@ -96,6 +109,9 @@ class _$ArticleTileThemeDataCopyWithImpl<$Res>
           : decoration as BoxDecoration,
       imageColor:
           imageColor == freezed ? _value.imageColor : imageColor as Color,
+      transitionDuration: transitionDuration == freezed
+          ? _value.transitionDuration
+          : transitionDuration as Duration,
     ));
   }
 }
@@ -111,9 +127,11 @@ abstract class _$ArticleTileThemeDataCopyWith<$Res>
       TextStyle descriptionStyle,
       double spacing,
       double imageSize,
+      double imageOpacity,
       BorderRadius imageBorderRadius,
       BoxDecoration decoration,
-      Color imageColor});
+      Color imageColor,
+      Duration transitionDuration});
 }
 
 class __$ArticleTileThemeDataCopyWithImpl<$Res>
@@ -132,9 +150,11 @@ class __$ArticleTileThemeDataCopyWithImpl<$Res>
     Object descriptionStyle = freezed,
     Object spacing = freezed,
     Object imageSize = freezed,
+    Object imageOpacity = freezed,
     Object imageBorderRadius = freezed,
     Object decoration = freezed,
     Object imageColor = freezed,
+    Object transitionDuration = freezed,
   }) {
     return _then(_ArticleTileThemeData(
       titleStyle:
@@ -144,6 +164,9 @@ class __$ArticleTileThemeDataCopyWithImpl<$Res>
           : descriptionStyle as TextStyle,
       spacing: spacing == freezed ? _value.spacing : spacing as double,
       imageSize: imageSize == freezed ? _value.imageSize : imageSize as double,
+      imageOpacity: imageOpacity == freezed
+          ? _value.imageOpacity
+          : imageOpacity as double,
       imageBorderRadius: imageBorderRadius == freezed
           ? _value.imageBorderRadius
           : imageBorderRadius as BorderRadius,
@@ -152,6 +175,9 @@ class __$ArticleTileThemeDataCopyWithImpl<$Res>
           : decoration as BoxDecoration,
       imageColor:
           imageColor == freezed ? _value.imageColor : imageColor as Color,
+      transitionDuration: transitionDuration == freezed
+          ? _value.transitionDuration
+          : transitionDuration as Duration,
     ));
   }
 }
@@ -162,16 +188,20 @@ class _$_ArticleTileThemeData implements _ArticleTileThemeData {
       @required this.descriptionStyle,
       @required this.spacing,
       @required this.imageSize,
+      @required this.imageOpacity,
       @required this.imageBorderRadius,
       @required this.decoration,
-      @required this.imageColor})
+      @required this.imageColor,
+      @required this.transitionDuration})
       : assert(titleStyle != null),
         assert(descriptionStyle != null),
         assert(spacing != null),
         assert(imageSize != null),
+        assert(imageOpacity != null),
         assert(imageBorderRadius != null),
         assert(decoration != null),
-        assert(imageColor != null);
+        assert(imageColor != null),
+        assert(transitionDuration != null);
 
   @override
   final TextStyle titleStyle;
@@ -182,15 +212,19 @@ class _$_ArticleTileThemeData implements _ArticleTileThemeData {
   @override
   final double imageSize;
   @override
+  final double imageOpacity;
+  @override
   final BorderRadius imageBorderRadius;
   @override
   final BoxDecoration decoration;
   @override
   final Color imageColor;
+  @override
+  final Duration transitionDuration;
 
   @override
   String toString() {
-    return 'ArticleTileThemeData(titleStyle: $titleStyle, descriptionStyle: $descriptionStyle, spacing: $spacing, imageSize: $imageSize, imageBorderRadius: $imageBorderRadius, decoration: $decoration, imageColor: $imageColor)';
+    return 'ArticleTileThemeData(titleStyle: $titleStyle, descriptionStyle: $descriptionStyle, spacing: $spacing, imageSize: $imageSize, imageOpacity: $imageOpacity, imageBorderRadius: $imageBorderRadius, decoration: $decoration, imageColor: $imageColor, transitionDuration: $transitionDuration)';
   }
 
   @override
@@ -209,6 +243,9 @@ class _$_ArticleTileThemeData implements _ArticleTileThemeData {
             (identical(other.imageSize, imageSize) ||
                 const DeepCollectionEquality()
                     .equals(other.imageSize, imageSize)) &&
+            (identical(other.imageOpacity, imageOpacity) ||
+                const DeepCollectionEquality()
+                    .equals(other.imageOpacity, imageOpacity)) &&
             (identical(other.imageBorderRadius, imageBorderRadius) ||
                 const DeepCollectionEquality()
                     .equals(other.imageBorderRadius, imageBorderRadius)) &&
@@ -217,7 +254,10 @@ class _$_ArticleTileThemeData implements _ArticleTileThemeData {
                     .equals(other.decoration, decoration)) &&
             (identical(other.imageColor, imageColor) ||
                 const DeepCollectionEquality()
-                    .equals(other.imageColor, imageColor)));
+                    .equals(other.imageColor, imageColor)) &&
+            (identical(other.transitionDuration, transitionDuration) ||
+                const DeepCollectionEquality()
+                    .equals(other.transitionDuration, transitionDuration)));
   }
 
   @override
@@ -227,9 +267,11 @@ class _$_ArticleTileThemeData implements _ArticleTileThemeData {
       const DeepCollectionEquality().hash(descriptionStyle) ^
       const DeepCollectionEquality().hash(spacing) ^
       const DeepCollectionEquality().hash(imageSize) ^
+      const DeepCollectionEquality().hash(imageOpacity) ^
       const DeepCollectionEquality().hash(imageBorderRadius) ^
       const DeepCollectionEquality().hash(decoration) ^
-      const DeepCollectionEquality().hash(imageColor);
+      const DeepCollectionEquality().hash(imageColor) ^
+      const DeepCollectionEquality().hash(transitionDuration);
 
   @override
   _$ArticleTileThemeDataCopyWith<_ArticleTileThemeData> get copyWith =>
@@ -243,9 +285,11 @@ abstract class _ArticleTileThemeData implements ArticleTileThemeData {
       @required TextStyle descriptionStyle,
       @required double spacing,
       @required double imageSize,
+      @required double imageOpacity,
       @required BorderRadius imageBorderRadius,
       @required BoxDecoration decoration,
-      @required Color imageColor}) = _$_ArticleTileThemeData;
+      @required Color imageColor,
+      @required Duration transitionDuration}) = _$_ArticleTileThemeData;
 
   @override
   TextStyle get titleStyle;
@@ -256,11 +300,15 @@ abstract class _ArticleTileThemeData implements ArticleTileThemeData {
   @override
   double get imageSize;
   @override
+  double get imageOpacity;
+  @override
   BorderRadius get imageBorderRadius;
   @override
   BoxDecoration get decoration;
   @override
   Color get imageColor;
+  @override
+  Duration get transitionDuration;
   @override
   _$ArticleTileThemeDataCopyWith<_ArticleTileThemeData> get copyWith;
 }
